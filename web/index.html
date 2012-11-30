@@ -54,6 +54,28 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="span5">
+                    <table class="table hiddenFromStart">
+                        <tbody>
+                        <tr>
+                            <th>CREATE COUNT:</th>
+                            <td><span data-bind="text: service_info().create_count"></span></td>
+                        </tr>
+                        <tr>
+                            <th>CREATE MEAN TIME:</th>
+                            <td><span data-bind="text: service_info().create_avg_time"></span> ms</td>
+                        </tr>
+                        <tr>
+                            <th>GET ALL COUNT:</th>
+                            <td><span data-bind="text: service_info().get_count"></span></td>
+                        </tr>
+                        <tr>
+                            <th>GET MEAN TIME:</th>
+                            <td><span data-bind="text: service_info().get_avg_time"></span> ms</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
