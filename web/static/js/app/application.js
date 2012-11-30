@@ -17,24 +17,23 @@ function initializeWebsocketConnection() {
 
     if (window.WebSocket) {
         Dropwizard.bindings.beforeSocketConnect(true);
-
-        var initialized = false;
         var socket = new WebSocket("ws://localhost:9000");
         socket.onmessage = function (event) {
-            triggerHeartBeat();
 
             var json = JSON.parse(event.data);
             if (json.namespace === "metrics") {
+                triggerHeartBeat();
+                heart.removeClass('dead')
                 Dropwizard.onMetrics(json.payload);
-
-                if (initialized === false) {
-                    $(".hiddenFromStart").css("visibility", "visible");
-                    initialized = true;
-                }
+                $(".hiddenFromStart").css("visibility", "visible");
+            } else if (json.namespace === "error") {
+                $(".hiddenFromStart").css("visibility", "hidden");
+                heart.addClass('dead')
             }
         };
 
         socket.onerror = function(event) {
+            heart.addClass('dead')
             Dropwizard.bindings.connectionError(event);
         };
 
@@ -43,6 +42,7 @@ function initializeWebsocketConnection() {
         };
 
         socket.onclose = function (event) {
+            heart.addClass('dead')
             Dropwizard.bindings.connectionToProxyLost(true)
         };
     }
@@ -51,8 +51,8 @@ function initializeWebsocketConnection() {
     }
 
     function triggerHeartBeat() {
-        heart.fadeTo(100, 0.4, function () {
-            heart.fadeTo(300, 0.2);
+        heart.fadeTo(500, 0.5, function () {
+            heart.fadeTo(1500, 1.0);
         });
     }
 

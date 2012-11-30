@@ -12,16 +12,19 @@ import groovy.json.JsonSlurper
 Vertx vx = vertx;
 HttpServer server = vx.createHttpServer()
 
-HttpClient httpClient = vx.createHttpClient(host: "localhost", port: 8081)
+HttpClient httpClient = vx.createHttpClient(host: "192.168.70.4", port: 8085)
 DropwizardClient client = new DropwizardClient(client: httpClient)
 Listeners listeners = new Listeners()
 
-vx.setPeriodic(1000) {
+vx.setPeriodic(3000) {
 
     // Don't poll status if nobody is listening
     if (listeners.hasAtLeastOneListener()) {
-        client.withMetrics { metrics ->
-            listeners.push("metrics", metrics)
+        client.withMetrics { namespace, metrics ->
+            listeners.push(namespace, metrics)
+        }
+        if (client.error) {
+            listeners.push("error", null)
         }
     }
 }
@@ -38,6 +41,7 @@ server.websocketHandler { WebSocket socket ->
 class DropwizardClient {
 
     HttpClient client
+    static boolean error = false
 
     void withMetrics(Closure handler) {
         client.getNow("/metrics") { HttpClientResponse response ->
@@ -50,7 +54,8 @@ class DropwizardClient {
 
             response.endHandler {
                 String data = buffer.toString() // Bug in the overloaded method allowing encoding to be set
-                handler(new JsonSlurper().parseText(data))
+                error = false
+                handler("metrics", new JsonSlurper().parseText(data))
             }
         }
     }
@@ -61,8 +66,8 @@ class DropwizardClient {
     }
 
     static void exceptionHandler(Exception ex) {
+        error = true
         System.err.println("Http client exception: ${ex.message}")
-        ex.print(System.err)
     }
 
 }
@@ -109,6 +114,9 @@ server.requestHandler { request ->
     }
     else if (request.uri.startsWith("/static")) {
         request.response.sendFile "web" + request.uri
+    }
+    else if (request.uri == "/favicon.ico") {
+        request.response.sendFile "web/favicon.ico"
     }
     else {
         request.response.sendFile "web/404.html"

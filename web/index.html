@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Dropwizard Dashboard</title>
+        <title>Service Dashboard</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Vertx experiment - Dropwizard Dashboard">
         <meta name="author" content="Kim A. Betti">
@@ -10,49 +10,23 @@
         <link href="/static/css/bootstrap.min.css" rel="stylesheet">
         <style type="text/css">
             body {
-                padding-top: 60px;
-                padding-bottom: 40px;
+                padding-top: 10px;
+                padding-bottom: 10px;
             }
         </style>
         <link href="/static/css/bootstrap-responsive.min.css" rel="stylesheet">
         <link href="/static/css/application.css" rel="stylesheet">
+        <link rel="shortcut icon" href="/static/favicon.ico" />
     </head>
     <body>
-
-    <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-                <a class="brand" href="#">Dropwizard Dashboard!</a>
-
-                <div class="nav-collapse">
-                    <ul class="nav">
-                        <li class="active"><a href="#">Dashboard</a></li>
-                        <li><a href="http://github.com/kimble">Github</a></li>
-                        <li><a href="http://blog.developer-b.com/">Blog</a></li>
-                    </ul>
-
-                    <ul class="nav"  data-bind="template: { name: 'navigation-component-link', foreach: pageComponents }"></ul>
-                </div>
-
-                <script type="text/html" id="navigation-component-link">
-                    <li><a href="#${dom_id}">${name}</a></li>
-                </script>
-            </div>
-        </div>
-    </div>
-
 
     <div class="container">
 
         <div class="hero-unit">
             <div class="row">
                 <div class="span5" style="text-align: center">
-                    <h1>Dropwizard dashboard</h1>
+                    <h1>Sandbox Service</h1><br />
+                    <i id="heart" class="heart dead" style="opacity: 1.0"></i>
 
                     <div class="alert alert-info" data-bind="visible: !connectionToProxyEstablished">
                         Please wait while contact with server is established!
@@ -75,7 +49,7 @@
                         </tr>
                         <tr>
                             <th>Server time:</th>
-                            <td><span data-bind="text: readableServerTime"></span> <i id="heart" class="icon-heart" style="opacity: 0.3"></i></td>
+                            <td><span data-bind="text: readableServerTime"></span> </td>
                         </tr>
                         </tbody>
                     </table>
@@ -100,15 +74,10 @@
             <div class="page-header hiddenFromStart">
                 <h1>${name} <small>${shortDescription}</small></h1>
             </div>
-            <div class="row" id="${dom_id}"></div>
+            <div class="row hiddenFromStart" id="${dom_id}"></div>
         </script>
 
-
         <hr>
-
-        <footer>
-            <p><a href="http://no.linkedin.com/pub/kim-betti/30/4b4/562"><i class="icon-check"></i> <b>Kim A. Betti</b></a></p>
-        </footer>
 
         <!-- 3rd party -->
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>

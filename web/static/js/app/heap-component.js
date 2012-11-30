@@ -2,7 +2,7 @@
 
     var component = {
         name                : "Heap",
-        shortDescription    : "Utilisation",
+        shortDescription    : "Utilization",
         dom_id              : "jvm_heap_container"
     };
 

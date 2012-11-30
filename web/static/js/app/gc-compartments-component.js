@@ -13,7 +13,7 @@
 
     var component = {
         name                : "Garbage collection",
-        shortDescription    : "Compartment utilisation",
+        shortDescription    : "Compartment utilization",
         dom_id              : "gc_compartments_container"
     };
 

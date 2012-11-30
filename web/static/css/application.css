@@ -30,3 +30,16 @@ footer a {
 footer a:hover {
     text-decoration: none;
 }
+
+.heart {
+    display:inline-block;
+    width:128px;
+    height:128px;
+    vertical-align:text-top;
+    background-image:url("../img/happyEyeOfSauron.png");
+    background-repeat:no-repeat;
+}
+
+.dead {
+    background-image:url("../img/dead.png");
+}
