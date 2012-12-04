@@ -41,5 +41,10 @@ footer a:hover {
 }
 
 .dead {
+    display:inline-block;
+    width:128px;
+    height:128px;
+    vertical-align:text-top;
     background-image:url("../img/dead.png");
+    background-repeat:no-repeat;
 }

@@ -1,0 +1,39 @@
+<div class="span3 hiddenFromStart">
+    <p class="info" style="margin-bottom: 0em">
+        Chart is get all requests per second.
+    </p>
+
+    <table class="table" style="margin-top: 1em">
+        <tbody>
+        <tr>
+            <td>CREATE</td>
+        </tr>
+        <tr>
+            <th style="width: 20%">Count: </th>
+            <td><span data-bind="text: widgetMetrics().create_count"></span></td>
+
+            <th style="width: 20%">Mean: </th>
+            <td><span data-bind="text: widgetMetrics().create_avg_time"></span> ms</td>
+        </tr>
+        </tbody>
+    </table>
+    <table class="table">
+        <tbody>
+        <tr>
+            <td>GET ALL</td>
+        </tr>
+        <tr>
+            <th>Count: </th>
+            <td><span data-bind="text: widgetMetrics().get_count"></span></td>
+
+            <th>Mean: </th>
+            <td><span data-bind="text: widgetMetrics().get_avg_time"></span> ms</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="span9 hiddenFromStart">
+    <div class="well" style="padding: 2px 2px 0px 2px; display: inline-block">
+        <canvas id="metrics_smoothie_chart" width="840" height="160" style="border: 1px solid #ddd; border-radius: 2px"></canvas>
+    </div>
+</div>

@@ -1,126 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Service Dashboard</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Vertx experiment - Dropwizard Dashboard">
-        <meta name="author" content="Kim A. Betti">
+<head>
+    <meta charset="utf-8">
+    <title>Service Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vertx experiment - Dropwizard Dashboard">
+    <meta name="author" content="Kim A. Betti">
 
-        <link href="/static/css/bootstrap.min.css" rel="stylesheet">
-        <style type="text/css">
-            body {
-                padding-top: 10px;
-                padding-bottom: 10px;
-            }
-        </style>
-        <link href="/static/css/bootstrap-responsive.min.css" rel="stylesheet">
-        <link href="/static/css/application.css" rel="stylesheet">
-        <link rel="shortcut icon" href="/static/favicon.ico" />
-    </head>
-    <body>
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+    </style>
+    <link href="/static/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/static/css/application.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/static/favicon.ico" />
+</head>
+<body>
+<h1 class="hero-unit" style="font-size: 60px">Service Dashboard</h1><br />
+<div class="container">
 
-    <div class="container">
+    <div class="hero-unit">
+        <div style="text-align: center">
+            <table style="width: 100%">
+                <tr>
+                    <td>
+                        <h1>Member</h1><br />
+                        <i class="heart" style="opacity: 1.0"></i>
 
-        <div class="hero-unit">
-            <div class="row">
-                <div class="span5" style="text-align: center">
-                    <h1>Sandbox Service</h1><br />
-                    <i id="heart" class="heart dead" style="opacity: 1.0"></i>
+                        <div class="alert alert-info" data-bind="visible: !connectionToProxyEstablished">
+                            Please wait while contact with server is established!
+                        </div>
+                    </td>
+                    <td>
+                        <h1>Event</h1><br />
+                        <a href="/service_sandbox.html"><i id="heart" class="heart dead" style="opacity: 1.0"></i></a>
 
-                    <div class="alert alert-info" data-bind="visible: !connectionToProxyEstablished">
-                        Please wait while contact with server is established!
-                    </div>
-                </div>
-                <div class="span5">
-                    <table class="table hiddenFromStart">
-                        <tbody>
-                        <tr>
-                            <th>Virtual machine name:</th>
-                            <td><span data-bind="text: vminfo().name"></span></td>
-                        </tr>
-                        <tr>
-                            <th>Virtual machine version:</th>
-                            <td><span data-bind="text: vminfo().version"></span></td>
-                        </tr>
-                        <tr>
-                            <th>Application uptime:</th>
-                            <td><span data-bind="text: readableVmUptime"></span></td>
-                        </tr>
-                        <tr>
-                            <th>Server time:</th>
-                            <td><span data-bind="text: readableServerTime"></span> </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="span5">
-                    <table class="table hiddenFromStart">
-                        <tbody>
-                        <tr>
-                            <th>CREATE COUNT:</th>
-                            <td><span data-bind="text: service_info().create_count"></span></td>
-                        </tr>
-                        <tr>
-                            <th>CREATE MEAN TIME:</th>
-                            <td><span data-bind="text: service_info().create_avg_time"></span> ms</td>
-                        </tr>
-                        <tr>
-                            <th>GET ALL COUNT:</th>
-                            <td><span data-bind="text: service_info().get_count"></span></td>
-                        </tr>
-                        <tr>
-                            <th>GET MEAN TIME:</th>
-                            <td><span data-bind="text: service_info().get_avg_time"></span> ms</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+                        <div class="alert alert-info" data-bind="visible: !connectionToProxyEstablished">
+                            Please wait while contact with server is established!
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h1>Purchase</h1><br />
+                        <i class="heart dead" style="opacity: 1.0"></i>
+
+                        <div class="alert alert-info" data-bind="visible: !connectionToProxyEstablished">
+                            Please wait while contact with server is established!
+                        </div>
+                    </td>
+                    <td>
+                        <h1>ETL</h1><br />
+                        <i class="heart" style="opacity: 1.0"></i>
+
+                        <div class="alert alert-info" data-bind="visible: !connectionToProxyEstablished">
+                            Please wait while contact with server is established!
+                        </div>
+                    </td>
+                </tr>
+            </table>
         </div>
+    </div>
 
 
-        <div class="alert alert-error" data-bind="visible: connectionToProxyLost">
-            Lost connection to proxy - Refresh page to reconnect
-        </div>
+    <div class="alert alert-error" data-bind="visible: connectionToProxyLost">
+        Lost connection to proxy - Refresh page to reconnect
+    </div>
+
+    <!-- 3rd party -->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="/static/js/lib/smoothie.js/smoothie.js"></script>
+    <script type="text/javascript" src="/static/js/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/lib/jquery.tmpl.js"></script>
+    <script type="text/javascript" src="/static/js/lib/knockout.min.js"></script>
+
+    <!-- Data binding for Knockout -->
+    <script type="text/javascript" src="/static/js/app/bindings.js"></script>
+
+    <script type="text/javascript" src="/static/js/app/application.js"></script>
 
 
-        <!--------
-             R e n d e r    a l l    p a g e    c o m p o n e n t s
-                                                             ---------->
-
-        <div data-bind="template: { name: 'component-template', foreach: pageComponents }"></div>
-
-        <script type="text/html" id="component-template">
-            <a name="${dom_id}"></a>
-            <div class="page-header hiddenFromStart">
-                <h1>${name} <small>${shortDescription}</small></h1>
-            </div>
-            <div class="row hiddenFromStart" id="${dom_id}"></div>
-        </script>
-
-        <hr>
-
-        <!-- 3rd party -->
-        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-        <script type="text/javascript" src="/static/js/lib/smoothie.js/smoothie.js"></script>
-        <script type="text/javascript" src="/static/js/lib/jquery.min.js"></script>
-        <script type="text/javascript" src="/static/js/lib/jquery.tmpl.js"></script>
-        <script type="text/javascript" src="/static/js/lib/moment.min.js"></script>
-        <script type="text/javascript" src="/static/js/lib/knockout.min.js"></script>
-
-        <!-- Data binding for Knockout -->
-        <script type="text/javascript" src="/static/js/app/bindings.js"></script>
-
-        <!-- Visualization -->
-        <script type="text/javascript" src="/static/js/app/vm-information-component.js"></script>
-        <script type="text/javascript" src="/static/js/app/gc-compartments-component.js"></script>
-        <script type="text/javascript" src="/static/js/app/heap-component.js"></script>
-        <script type="text/javascript" src="/static/js/app/vm-thread-component.js"></script>
-        <script type="text/javascript" src="/static/js/app/logging-component.js"></script>
-
-        <script type="text/javascript" src="/static/js/app/application.js"></script>
-
-
-    </body>
+</body>
 </html>

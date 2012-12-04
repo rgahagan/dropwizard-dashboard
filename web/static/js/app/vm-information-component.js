@@ -10,13 +10,6 @@
             uptime  : 0
         });
 
-        self.service_info = ko.observable({
-            create_count    : 0,
-            create_avg_time : 0,
-            get_count       : 0,
-            get_avg_time    : 0
-        });
-
         self.readableVmUptime = ko.computed(function() {
             var uptime = self.vminfo().uptime;
             return moment.humanizeDuration(uptime * 1000);
@@ -42,14 +35,6 @@
                 version : vm.version,
                 time    : jvm.current_time,
                 uptime  : jvm.uptime
-            });
-
-            var service = metrics["com.bloomhealthco.radiant.service.template.resources.WidgetResource"];
-            bindings.service_info({
-                create_count    : service.createWidget.rate.count,
-                create_avg_time : Math.round(service.createWidget.duration.mean),
-                get_count       : service.getWidgets.rate.count,
-                get_avg_time    : Math.round(service.getWidgets.duration.mean)
             });
         }
     });

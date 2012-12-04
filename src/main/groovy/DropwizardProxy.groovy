@@ -112,7 +112,7 @@ server.requestHandler { request ->
     if (request.uri == "/") {
         request.response.sendFile "web/index.html"
     }
-    else if (request.uri.startsWith("/static")) {
+    else if (request.uri.startsWith("/static") || request.uri.startsWith("/service")) {
         request.response.sendFile "web" + request.uri
     }
     else if (request.uri == "/favicon.ico") {

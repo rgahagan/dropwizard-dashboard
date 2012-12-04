@@ -14,6 +14,7 @@ function googleChartsLoaded() {
 function initializeWebsocketConnection() {
 
     var heart = $("#heart");
+    var hearts = $(".heart");
 
     if (window.WebSocket) {
         Dropwizard.bindings.beforeSocketConnect(true);
@@ -51,8 +52,8 @@ function initializeWebsocketConnection() {
     }
 
     function triggerHeartBeat() {
-        heart.fadeTo(500, 0.5, function () {
-            heart.fadeTo(1500, 1.0);
+        hearts.fadeTo(500, 0.5, function () {
+            hearts.fadeTo(1000, 1.0);
         });
     }
 
