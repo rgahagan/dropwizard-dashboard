@@ -12,7 +12,7 @@ import groovy.json.JsonSlurper
 Vertx vx = vertx;
 HttpServer server = vx.createHttpServer()
 
-HttpClient httpClient = vx.createHttpClient(host: "192.168.70.4", port: 8085)
+HttpClient httpClient = vx.createHttpClient(host: "192.168.70.4", port: 8086)
 DropwizardClient client = new DropwizardClient(client: httpClient)
 Listeners listeners = new Listeners()
 
